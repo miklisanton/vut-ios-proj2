@@ -9,7 +9,7 @@
 #include <unistd.h>
 #include "help.h"
 #include "resources.h"
-int oxygenProcess(Arguments arguments);
-int hydrogenProcess(Arguments arguments);
+int oxygenProcess(Arguments arguments, FILE *fPtr);
+int hydrogenProcess(Arguments arguments, FILE *fPtr);
 
 #endif //VUT_IOS_PROJ2_PROCESSES_H

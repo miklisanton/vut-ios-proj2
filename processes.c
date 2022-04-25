@@ -3,23 +3,24 @@
 //
 
 #include "processes.h"
-int oxygenProcess(Arguments args){
+int oxygenProcess(Arguments args, FILE *fPtr){
     pid_t oxygenPid;
     for (int i = 0; i < args.oxygenNumber; ++i) {
         if((oxygenPid = fork()) == 0){
             //oxygen atom creation
             sem_wait(semaphores.mutex);
-            fprintf(sharedData->output, "%d: O %d: started\n", sharedData->lineCount, i + 1);
-            fflush(sharedData->output);
-            sleep_random(args.waitTime);
+            fprintf(fPtr, "%d: O %d: started\n", sharedData->lineCount, i + 1);
+            fflush(fPtr);
             sharedData->lineCount++;
-            sharedData->oxygenCount++;
+            sleep_random(args.waitTime);
 
-            fprintf(sharedData->output, "%d: O %d: going to queue\n", sharedData->lineCount, i + 1);
-            fflush(sharedData->output);
+            sharedData->oxygenCount++;
+            fprintf(fPtr, "%d: O %d: going to queue\n", sharedData->lineCount, i + 1);
+            fflush(fPtr);
             sharedData->lineCount++;
 
             if(sharedData->hydrogenCount >= 2){
+
                 sem_post(semaphores.hydrogenQueue);
                 sem_post(semaphores.hydrogenQueue);
                 sharedData->hydrogenCount -= 2;
@@ -30,13 +31,13 @@ int oxygenProcess(Arguments args){
             }
             sem_wait(semaphores.oxygenQueue);
             //creating molecule
-            fprintf(sharedData->output, "%d: O %d: creating molecule %d\n",
+            fprintf(fPtr, "%d: O %d: creating molecule %d\n",
                     sharedData->lineCount++,i + 1, sharedData->moleculeCount);
-            fflush(sharedData->output);
+            fflush(fPtr);
             sleep_random(args.createTime);
-            fprintf(sharedData->output, "%d: O %d: molecule %d created\n",
+            fprintf(fPtr, "%d: O %d: molecule %d created\n",
                     sharedData->lineCount++,i + 1, sharedData->moleculeCount);
-            fflush(sharedData->output);
+            fflush(fPtr);
 
             // barrier
             sem_wait(barrier.mutex);
@@ -52,7 +53,6 @@ int oxygenProcess(Arguments args){
 
             // critical point
             sharedData->moleculeCount++;
-            sem_post(semaphores.mutex);
 
             sem_wait(barrier.mutex);
             sharedData->barrierCount--;
@@ -65,6 +65,7 @@ int oxygenProcess(Arguments args){
             sem_wait(barrier.turnstile2);
             sem_post(barrier.turnstile2);
             // end of barrier
+            sem_post(semaphores.mutex);
 
             exit(0);
         } else if(oxygenPid < 0){
@@ -75,23 +76,24 @@ int oxygenProcess(Arguments args){
     }
 }
 
-int hydrogenProcess(Arguments args){
+int hydrogenProcess(Arguments args, FILE *fPtr){
     pid_t hydrogenPid;
     for (int i = 0; i < args.hydrogenNumber; ++i) {
         if((hydrogenPid = fork()) == 0){
             //hydrogen atom creation
             sem_wait(semaphores.mutex);
-            fprintf(sharedData->output, "%d: H %d: started\n", sharedData->lineCount, i + 1);
-            fflush(sharedData->output);
-            sleep_random(args.waitTime);
+            fprintf(fPtr, "%d: H %d: started\n", sharedData->lineCount, i + 1);
+            fflush(fPtr);
             sharedData->lineCount++;
-            sharedData->hydrogenCount++;
+            sleep_random(args.waitTime);
 
-            fprintf(sharedData->output, "%d: H %d: going to queue\n", sharedData->lineCount, i + 1);
-            fflush(sharedData->output);
+            sharedData->hydrogenCount++;
+            fprintf(fPtr, "%d: H %d: going to queue\n", sharedData->lineCount, i + 1);
+            fflush(fPtr);
             sharedData->lineCount++;
 
             if(sharedData->hydrogenCount >= 2 && sharedData->oxygenCount >= 1){
+
                 sem_post(semaphores.hydrogenQueue);
                 sem_post(semaphores.hydrogenQueue);
                 sharedData->hydrogenCount -= 2;
@@ -104,14 +106,14 @@ int hydrogenProcess(Arguments args){
             sem_wait(semaphores.hydrogenQueue);
 
             //creating molecule
-            fprintf(sharedData->output, "%d: H %d: creating molecule %d\n",
+            fprintf(fPtr, "%d: H %d: creating molecule %d\n",
                     sharedData->lineCount++,i + 1, sharedData->moleculeCount);
-            fflush(sharedData->output);
+            fflush(fPtr);
             sleep_random(args.createTime);
             //molecule created
-            fprintf(sharedData->output, "%d: H %d: molecule %d created\n",
+            fprintf(fPtr, "%d: H %d: molecule %d created\n",
                     sharedData->lineCount++,i + 1, sharedData->moleculeCount);
-            fflush(sharedData->output);
+            fflush(fPtr);
 
             // barrier
             sem_wait(barrier.mutex);
