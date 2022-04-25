@@ -6,6 +6,7 @@
 
 SharedResources *sharedData;
 Semaphores semaphores;
+Barrier barrier;
 
 int initShared(FILE *fPtr, Arguments args){
     key_t key = ftok("../main.c", 1222);
@@ -26,7 +27,7 @@ int initShared(FILE *fPtr, Arguments args){
     sharedData->output = fPtr;
     sharedData->lineCount = 1;
     sharedData->memId = memoryId;
-    sharedData->moleculeCount = 0;
+    sharedData->moleculeCount = 1;
     return 0;
 }
 
@@ -36,16 +37,23 @@ void cleanShared(){
     shmctl(memId, IPC_RMID, 0);
 }
 
-int initBarrier(pthread_barrier_t *barrier, unsigned int count){
-    pthread_barrierattr_t attributes;
-    if((pthread_barrierattr_init(&attributes)) != 0){
+int initBarrier(){
+    barrier.mutex = sem_open("xmikli05-barrier-mutex", O_CREAT | O_EXCL, 0644, 1);
+    if(barrier.mutex == (void *) -1){
+        perror("Failed to open semaphore.");
         return -1;
     }
-    pthread_barrierattr_setpshared(&attributes, PTHREAD_PROCESS_SHARED);
-    if((pthread_barrier_init(barrier, &attributes, count)) != 0){
+    barrier.turnstile = sem_open("xmikli05-barrier-turnstile", O_CREAT | O_EXCL, 0644, 0);
+    if(barrier.turnstile == (void *) -1){
+        perror("Failed to open semaphore.");
         return -1;
     }
-    pthread_barrierattr_destroy(&attributes);
+    barrier.turnstile2 = sem_open("xmikli05-barrier-turnstile2", O_CREAT | O_EXCL, 0644, 1);
+    if(barrier.turnstile2 == (void *) -1){
+        perror("Failed to open semaphore.");
+        return -1;
+    }
+    sharedData->barrierCount = 0;
     return 0;
 }
 
@@ -65,16 +73,27 @@ int initSemaphores(){
         perror("Failed to open semaphore.");
         return -1;
     }
-    semaphores.barrier = sem_open("xmikli05-barrier", O_CREAT | O_EXCL, 0644, 0);
+    semaphores.barrier = sem_open("xmikli05-barrier", O_CREAT | O_EXCL, 0644, 1);
     if(semaphores.barrier == (void *) -1){
         perror("Failed to open semaphore.");
         return -1;
     }
-    if(initBarrier(&semaphores.sBarrier, 3) == -1){
+    if(initBarrier(3) == -1){
         perror("Failed to open barrier");
         return -1;
     }
     return 0;
+}
+
+void destroyBarrier(){
+    sem_close(barrier.mutex);
+    sem_unlink("xmikli05-barrier-mutex");
+
+    sem_close(barrier.turnstile);
+    sem_unlink("xmikli05-barrier-turnstile");
+
+    sem_close(barrier.turnstile2);
+    sem_unlink("xmikli05-barrier-turnstile2");
 }
 
 void destroySemaphores(){
@@ -90,7 +109,7 @@ void destroySemaphores(){
     sem_close(semaphores.barrier);
     sem_unlink("xmikli05-barrier");
 
-    pthread_barrier_destroy(&semaphores.sBarrier);
+    destroyBarrier();
 }
 
 

@@ -23,8 +23,15 @@ typedef struct{
     int hydrogenNumber;
     int lineCount;
     int moleculeCount;
+    int barrierCount;
     FILE *output;
 }SharedResources;
+
+typedef struct {
+    sem_t *mutex;
+    sem_t *turnstile;
+    sem_t *turnstile2;
+}Barrier;
 
 typedef struct{
     sem_t *mutex;
@@ -36,11 +43,13 @@ typedef struct{
 
 extern SharedResources *sharedData;
 extern Semaphores semaphores;
+extern Barrier barrier;
 
 int initShared(FILE *fPtr, Arguments args);
 void cleanShared();
-int initBarrier(pthread_barrier_t *barrier, unsigned int count);
+int initBarrier();
 int initSemaphores();
+void destroyBarrier();
 void destroySemaphores();
 
 #endif //VUT_IOS_PROJ2_RESOURCES_H
