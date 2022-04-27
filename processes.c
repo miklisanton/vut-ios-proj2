@@ -43,11 +43,6 @@ int oxygenProcess(Arguments args, FILE *fPtr){
             fflush(fPtr);
             sem_post(semaphores.mutexPrint);
             sleep_random(args.createTime);
-            sem_wait(semaphores.mutexPrint);
-            fprintf(fPtr, "%d: O %d: molecule %d created\n",
-                    sharedData->lineCount++,i + 1, sharedData->moleculeCount);
-            fflush(fPtr);
-            sem_post(semaphores.mutexPrint);
 
             // barrier
             sem_wait(barrier.mutex);
@@ -75,6 +70,11 @@ int oxygenProcess(Arguments args, FILE *fPtr){
             sem_wait(barrier.turnstile2);
             sem_post(barrier.turnstile2);
             // end of barrier
+            sem_wait(semaphores.mutexPrint);
+            fprintf(fPtr, "%d: O %d: molecule %d created\n",
+                    sharedData->lineCount++,i + 1, sharedData->moleculeCount - 1);
+            fflush(fPtr);
+            sem_post(semaphores.mutexPrint);
             sem_post(semaphores.mutex);
 
             exit(0);
@@ -124,13 +124,6 @@ int hydrogenProcess(Arguments args, FILE *fPtr){
                     sharedData->lineCount++,i + 1, sharedData->moleculeCount);
             fflush(fPtr);
             sem_post(semaphores.mutexPrint);
-            sleep_random(args.createTime);
-            //molecule created
-            sem_wait(semaphores.mutexPrint);
-            fprintf(fPtr, "%d: H %d: molecule %d created\n",
-                    sharedData->lineCount++,i + 1, sharedData->moleculeCount);
-            fflush(fPtr);
-            sem_post(semaphores.mutexPrint);
 
             // barrier
             sem_wait(barrier.mutex);
@@ -157,6 +150,14 @@ int hydrogenProcess(Arguments args, FILE *fPtr){
             sem_wait(barrier.turnstile2);
             sem_post(barrier.turnstile2);
             // end of barrier
+
+            //molecule created
+            sem_wait(semaphores.mutexPrint);
+            fprintf(fPtr, "%d: H %d: molecule %d created\n",
+                    sharedData->lineCount++,i + 1, sharedData->moleculeCount - 1);
+            fflush(fPtr);
+            sem_post(semaphores.mutexPrint);
+
             exit(0);
         } else if(hydrogenPid < 0){
             fprintf(stderr, "Hydrogen process error.\n");
