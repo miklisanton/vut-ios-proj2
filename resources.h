@@ -16,15 +16,12 @@
 #include "pthread.h"
 
 typedef struct{
-    int oxygenCount;
-    int hydrogenCount;
+    int oxygenQueueCount;   //counts oxygens waiting in queue
+    int hydrogenQueueCount; // counts hydrogens waiting in queue
     int memId;
-    int oxygenNumber;
-    int hydrogenNumber;
     int lineCount;
     int moleculeCount;
     int barrierCount;
-    FILE *output;
 }SharedResources;
 
 typedef struct {
@@ -37,15 +34,14 @@ typedef struct{
     sem_t *mutex;
     sem_t *oxygenQueue;
     sem_t *hydrogenQueue;
-    sem_t *barrier;
-    pthread_barrier_t sBarrier;
+    sem_t *mutexPrint;
 }Semaphores;
 
 extern SharedResources *sharedData;
 extern Semaphores semaphores;
 extern Barrier barrier;
 
-int initShared(FILE *fPtr, Arguments args);
+int initShared();
 void cleanShared();
 int initBarrier();
 int initSemaphores();

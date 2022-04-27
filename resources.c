@@ -8,7 +8,7 @@ SharedResources *sharedData;
 Semaphores semaphores;
 Barrier barrier;
 
-int initShared(FILE *fPtr, Arguments args){
+int initShared(){
     key_t key = ftok("../main.c", 1222);
     int memoryId = shmget(key, sizeof(SharedResources), IPC_CREAT | 0664);
     if(memoryId < 0){
@@ -20,11 +20,8 @@ int initShared(FILE *fPtr, Arguments args){
         perror("Shared memory attach");
         return 1;
     }
-    sharedData->hydrogenCount = 0;
-    sharedData->oxygenCount = 0;
-    sharedData->oxygenNumber = args.oxygenNumber;
-    sharedData->hydrogenNumber = args.hydrogenNumber;
-    sharedData->output = fPtr;
+    sharedData->hydrogenQueueCount = 0;
+    sharedData->oxygenQueueCount = 0;
     sharedData->lineCount = 1;
     sharedData->memId = memoryId;
     sharedData->moleculeCount = 1;
@@ -73,12 +70,12 @@ int initSemaphores(){
         perror("Failed to open semaphore.");
         return -1;
     }
-    semaphores.barrier = sem_open("xmikli05-barrier", O_CREAT | O_EXCL, 0644, 1);
-    if(semaphores.barrier == (void *) -1){
+    semaphores.mutexPrint = sem_open("xmikli05-barrier", O_CREAT | O_EXCL, 0644, 1);
+    if(semaphores.mutexPrint == (void *) -1){
         perror("Failed to open semaphore.");
         return -1;
     }
-    if(initBarrier(3) == -1){
+    if(initBarrier() == -1){
         perror("Failed to open barrier");
         return -1;
     }
@@ -106,7 +103,7 @@ void destroySemaphores(){
     sem_close(semaphores.mutex);
     sem_unlink("xmikli05-mutex");
 
-    sem_close(semaphores.barrier);
+    sem_close(semaphores.mutexPrint);
     sem_unlink("xmikli05-barrier");
 
     destroyBarrier();

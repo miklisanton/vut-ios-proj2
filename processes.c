@@ -2,42 +2,52 @@
 // Created by Антон Миклис on 22.04.22.
 //
 //todo oxygen/hydrogen not enough case
+
 #include "processes.h"
 int oxygenProcess(Arguments args, FILE *fPtr){
     pid_t oxygenPid;
     for (int i = 0; i < args.oxygenNumber; ++i) {
         if((oxygenPid = fork()) == 0){
             //oxygen atom creation
+            sem_wait(semaphores.mutexPrint);
             fprintf(fPtr, "%d: O %d: started\n", sharedData->lineCount++, i + 1);
             fflush(fPtr);
+            sem_post(semaphores.mutexPrint);
+
             sleep_random(args.waitTime);
 
+            sem_wait(semaphores.mutexPrint);
             fprintf(fPtr, "%d: O %d: going to queue\n", sharedData->lineCount++, i + 1);
             fflush(fPtr);
+            sem_post(semaphores.mutexPrint);
 
             sem_wait(semaphores.mutex);
-            sharedData->oxygenCount++;
+            sharedData->oxygenQueueCount++;
 
-            if(sharedData->hydrogenCount >= 2){
+            if(sharedData->hydrogenQueueCount >= 2){
 
                 sem_post(semaphores.hydrogenQueue);
                 sem_post(semaphores.hydrogenQueue);
-                sharedData->hydrogenCount -= 2;
+                sharedData->hydrogenQueueCount -= 2;
                 sem_post(semaphores.oxygenQueue);
-                sharedData->oxygenCount--;
+                sharedData->oxygenQueueCount--;
             }else{
                 sem_post(semaphores.mutex);
             }
 
             sem_wait(semaphores.oxygenQueue);
             //creating molecule
+            sem_wait(semaphores.mutexPrint);
             fprintf(fPtr, "%d: O %d: creating molecule %d\n",
                     sharedData->lineCount++,i + 1, sharedData->moleculeCount);
             fflush(fPtr);
+            sem_post(semaphores.mutexPrint);
             sleep_random(args.createTime);
+            sem_wait(semaphores.mutexPrint);
             fprintf(fPtr, "%d: O %d: molecule %d created\n",
                     sharedData->lineCount++,i + 1, sharedData->moleculeCount);
             fflush(fPtr);
+            sem_post(semaphores.mutexPrint);
 
             // barrier
             sem_wait(barrier.mutex);
@@ -69,11 +79,12 @@ int oxygenProcess(Arguments args, FILE *fPtr){
 
             exit(0);
         } else if(oxygenPid < 0){
-            fprintf(stderr, "Oxygen process error.");
+            fprintf(stderr, "Oxygen process error.\n");
             return -1;
         }
         //parent
     }
+    return 0;
 }
 
 int hydrogenProcess(Arguments args, FILE *fPtr){
@@ -81,37 +92,45 @@ int hydrogenProcess(Arguments args, FILE *fPtr){
     for (int i = 0; i < args.hydrogenNumber; ++i) {
         if((hydrogenPid = fork()) == 0){
             //hydrogen atom creation
+            sem_wait(semaphores.mutexPrint);
             fprintf(fPtr, "%d: H %d: started\n", sharedData->lineCount++, i + 1);
             fflush(fPtr);
+            sem_post(semaphores.mutexPrint);
             sleep_random(args.waitTime);
 
+            sem_wait(semaphores.mutexPrint);
             fprintf(fPtr, "%d: H %d: going to queue\n", sharedData->lineCount++, i + 1);
             fflush(fPtr);
+            sem_post(semaphores.mutexPrint);
 
             sem_wait(semaphores.mutex);
-            sharedData->hydrogenCount++;
+            sharedData->hydrogenQueueCount++;
 
-            if(sharedData->hydrogenCount >= 2 && sharedData->oxygenCount >= 1){
+            if(sharedData->hydrogenQueueCount >= 2 && sharedData->oxygenQueueCount >= 1){
 
                 sem_post(semaphores.hydrogenQueue);
                 sem_post(semaphores.hydrogenQueue);
-                sharedData->hydrogenCount -= 2;
+                sharedData->hydrogenQueueCount -= 2;
                 sem_post(semaphores.oxygenQueue);
-                sharedData->oxygenCount--;
+                sharedData->oxygenQueueCount--;
             }else{
                 sem_post(semaphores.mutex);
             }
             sem_wait(semaphores.hydrogenQueue);
 
             //creating molecule
+            sem_wait(semaphores.mutexPrint);
             fprintf(fPtr, "%d: H %d: creating molecule %d\n",
                     sharedData->lineCount++,i + 1, sharedData->moleculeCount);
             fflush(fPtr);
+            sem_post(semaphores.mutexPrint);
             sleep_random(args.createTime);
             //molecule created
+            sem_wait(semaphores.mutexPrint);
             fprintf(fPtr, "%d: H %d: molecule %d created\n",
                     sharedData->lineCount++,i + 1, sharedData->moleculeCount);
             fflush(fPtr);
+            sem_post(semaphores.mutexPrint);
 
             // barrier
             sem_wait(barrier.mutex);
@@ -140,9 +159,10 @@ int hydrogenProcess(Arguments args, FILE *fPtr){
             // end of barrier
             exit(0);
         } else if(hydrogenPid < 0){
-            fprintf(stderr, "Hydrogen process error.");
+            fprintf(stderr, "Hydrogen process error.\n");
             return -1;
         }
         //parent
     }
+    return 0;
 }
