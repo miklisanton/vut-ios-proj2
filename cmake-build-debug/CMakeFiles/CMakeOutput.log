@@ -1,0 +1,204 @@
+The system is: Linux - 5.4.188 - x86_64
+Compiling the C compiler identification source file "CMakeCCompilerId.c" succeeded.
+Compiler: /usr/local/bin/gcc 
+Build flags: 
+Id flags:  
+
+The output was:
+0
+
+
+Compilation of the C compiler identification source "CMakeCCompilerId.c" produced "a.out"
+
+The C compiler identification is GNU, found in "/tmp/tmp.ljbuwFip2T/cmake-build-debug/CMakeFiles/3.17.3/CompilerIdC/a.out"
+
+Determining if the C compiler works passed with the following output:
+Change Dir: /tmp/tmp.ljbuwFip2T/cmake-build-debug/CMakeFiles/CMakeTmp
+
+Run Build Command(s):/usr/bin/gmake cmTC_59f3a/fast && /usr/bin/gmake  -f CMakeFiles/cmTC_59f3a.dir/build.make CMakeFiles/cmTC_59f3a.dir/build
+gmake[1]: Entering directory `/tmp/tmp.ljbuwFip2T/cmake-build-debug/CMakeFiles/CMakeTmp'
+Building C object CMakeFiles/cmTC_59f3a.dir/testCCompiler.c.o
+/usr/local/bin/gcc    -o CMakeFiles/cmTC_59f3a.dir/testCCompiler.c.o   -c /tmp/tmp.ljbuwFip2T/cmake-build-debug/CMakeFiles/CMakeTmp/testCCompiler.c
+Linking C executable cmTC_59f3a
+/usr/local/bin/cmake -E cmake_link_script CMakeFiles/cmTC_59f3a.dir/link.txt --verbose=1
+/usr/local/bin/gcc      CMakeFiles/cmTC_59f3a.dir/testCCompiler.c.o  -o cmTC_59f3a 
+gmake[1]: Leaving directory `/tmp/tmp.ljbuwFip2T/cmake-build-debug/CMakeFiles/CMakeTmp'
+
+
+
+Detecting C compiler ABI info compiled with the following output:
+Change Dir: /tmp/tmp.ljbuwFip2T/cmake-build-debug/CMakeFiles/CMakeTmp
+
+Run Build Command(s):/usr/bin/gmake cmTC_d466c/fast && /usr/bin/gmake  -f CMakeFiles/cmTC_d466c.dir/build.make CMakeFiles/cmTC_d466c.dir/build
+gmake[1]: Entering directory `/tmp/tmp.ljbuwFip2T/cmake-build-debug/CMakeFiles/CMakeTmp'
+Building C object CMakeFiles/cmTC_d466c.dir/CMakeCCompilerABI.c.o
+/usr/local/bin/gcc   -v -o CMakeFiles/cmTC_d466c.dir/CMakeCCompilerABI.c.o   -c /usr/local/share/cmake-3.17/Modules/CMakeCCompilerABI.c
+Using built-in specs.
+COLLECT_GCC=/usr/local/bin/gcc
+Target: x86_64-linux
+Configured with: ../configure --build=x86_64-linux --with-arch=westmere --with-tune=sandybridge --with-thread=posix --with-as=/usr/local/bin/as --with-ld=/usr/local/bin/ld --with-system-zlib --program-suffix=-7.5
+Thread model: posix
+gcc version 7.5.0 (GCC) 
+COLLECT_GCC_OPTIONS='-v' '-o' 'CMakeFiles/cmTC_d466c.dir/CMakeCCompilerABI.c.o' '-c' '-mtune=sandybridge' '-march=westmere'
+ /usr/local/libexec/gcc/x86_64-linux/7.5.0/cc1 -quiet -v /usr/local/share/cmake-3.17/Modules/CMakeCCompilerABI.c -quiet -dumpbase CMakeCCompilerABI.c -mtune=sandybridge -march=westmere -auxbase-strip CMakeFiles/cmTC_d466c.dir/CMakeCCompilerABI.c.o -version -o /tmp/ccUC67Pb.s
+GNU C11 (GCC) version 7.5.0 (x86_64-linux)
+	compiled by GNU C version 7.5.0, GMP version 6.0.0, MPFR version 3.1.1, MPC version 0.8.2, isl version none
+warning: MPC header version 0.8.2 differs from library version 1.0.1.
+GGC heuristics: --param ggc-min-expand=100 --param ggc-min-heapsize=131072
+ignoring duplicate directory "/usr/local/lib/gcc/x86_64-linux/7.5.0/../../../../x86_64-linux/include"
+#include "..." search starts here:
+#include <...> search starts here:
+ /usr/local/lib/gcc/x86_64-linux/7.5.0/include
+ /usr/local/include
+ /usr/local/lib/gcc/x86_64-linux/7.5.0/include-fixed
+ /usr/include
+End of search list.
+GNU C11 (GCC) version 7.5.0 (x86_64-linux)
+	compiled by GNU C version 7.5.0, GMP version 6.0.0, MPFR version 3.1.1, MPC version 0.8.2, isl version none
+warning: MPC header version 0.8.2 differs from library version 1.0.1.
+GGC heuristics: --param ggc-min-expand=100 --param ggc-min-heapsize=131072
+Compiler executable checksum: c462cb5fb7dacc60e72bc574f1918ba8
+COLLECT_GCC_OPTIONS='-v' '-o' 'CMakeFiles/cmTC_d466c.dir/CMakeCCompilerABI.c.o' '-c' '-mtune=sandybridge' '-march=westmere'
+ /usr/local/bin/as -v --64 -o CMakeFiles/cmTC_d466c.dir/CMakeCCompilerABI.c.o /tmp/ccUC67Pb.s
+GNU assembler version 2.27 (x86_64-pc-linux-gnu) using BFD version (GNU Binutils) 2.27
+COMPILER_PATH=/usr/local/libexec/gcc/x86_64-linux/7.5.0/:/usr/local/libexec/gcc/x86_64-linux/7.5.0/:/usr/local/libexec/gcc/x86_64-linux/:/usr/local/lib/gcc/x86_64-linux/7.5.0/:/usr/local/lib/gcc/x86_64-linux/:/usr/local/lib/gcc/x86_64-linux/7.5.0/../../../../x86_64-linux/bin/
+LIBRARY_PATH=/usr/local/lib/gcc/x86_64-linux/7.5.0/:/usr/local/lib/gcc/x86_64-linux/7.5.0/../../../../x86_64-linux/lib/../lib64/:/usr/local/lib/gcc/x86_64-linux/7.5.0/../../../../lib64/:/lib/../lib64/:/usr/lib/../lib64/:/usr/local/lib/gcc/x86_64-linux/7.5.0/../../../../x86_64-linux/lib/:/usr/local/lib/gcc/x86_64-linux/7.5.0/../../../:/lib/:/usr/lib/
+COLLECT_GCC_OPTIONS='-v' '-o' 'CMakeFiles/cmTC_d466c.dir/CMakeCCompilerABI.c.o' '-c' '-mtune=sandybridge' '-march=westmere'
+Linking C executable cmTC_d466c
+/usr/local/bin/cmake -E cmake_link_script CMakeFiles/cmTC_d466c.dir/link.txt --verbose=1
+/usr/local/bin/gcc     -v CMakeFiles/cmTC_d466c.dir/CMakeCCompilerABI.c.o  -o cmTC_d466c 
+Using built-in specs.
+COLLECT_GCC=/usr/local/bin/gcc
+COLLECT_LTO_WRAPPER=/usr/local/libexec/gcc/x86_64-linux/7.5.0/lto-wrapper
+Target: x86_64-linux
+Configured with: ../configure --build=x86_64-linux --with-arch=westmere --with-tune=sandybridge --with-thread=posix --with-as=/usr/local/bin/as --with-ld=/usr/local/bin/ld --with-system-zlib --program-suffix=-7.5
+Thread model: posix
+gcc version 7.5.0 (GCC) 
+COMPILER_PATH=/usr/local/libexec/gcc/x86_64-linux/7.5.0/:/usr/local/libexec/gcc/x86_64-linux/7.5.0/:/usr/local/libexec/gcc/x86_64-linux/:/usr/local/lib/gcc/x86_64-linux/7.5.0/:/usr/local/lib/gcc/x86_64-linux/:/usr/local/lib/gcc/x86_64-linux/7.5.0/../../../../x86_64-linux/bin/
+LIBRARY_PATH=/usr/local/lib/gcc/x86_64-linux/7.5.0/:/usr/local/lib/gcc/x86_64-linux/7.5.0/../../../../x86_64-linux/lib/../lib64/:/usr/local/lib/gcc/x86_64-linux/7.5.0/../../../../lib64/:/lib/../lib64/:/usr/lib/../lib64/:/usr/local/lib/gcc/x86_64-linux/7.5.0/../../../../x86_64-linux/lib/:/usr/local/lib/gcc/x86_64-linux/7.5.0/../../../:/lib/:/usr/lib/
+COLLECT_GCC_OPTIONS='-v' '-o' 'cmTC_d466c' '-mtune=sandybridge' '-march=westmere'
+ /usr/local/libexec/gcc/x86_64-linux/7.5.0/collect2 -plugin /usr/local/libexec/gcc/x86_64-linux/7.5.0/liblto_plugin.so -plugin-opt=/usr/local/libexec/gcc/x86_64-linux/7.5.0/lto-wrapper -plugin-opt=-fresolution=/tmp/ccVtqB3h.res -plugin-opt=-pass-through=-lgcc -plugin-opt=-pass-through=-lgcc_s -plugin-opt=-pass-through=-lc -plugin-opt=-pass-through=-lgcc -plugin-opt=-pass-through=-lgcc_s --eh-frame-hdr -m elf_x86_64 -dynamic-linker /lib64/ld-linux-x86-64.so.2 -o cmTC_d466c /usr/local/lib/gcc/x86_64-linux/7.5.0/../../../../x86_64-linux/lib/../lib64/crt1.o /usr/local/lib/gcc/x86_64-linux/7.5.0/../../../../x86_64-linux/lib/../lib64/crti.o /usr/local/lib/gcc/x86_64-linux/7.5.0/crtbegin.o -L/usr/local/lib/gcc/x86_64-linux/7.5.0 -L/usr/local/lib/gcc/x86_64-linux/7.5.0/../../../../x86_64-linux/lib/../lib64 -L/usr/local/lib/gcc/x86_64-linux/7.5.0/../../../../lib64 -L/lib/../lib64 -L/usr/lib/../lib64 -L/usr/local/lib/gcc/x86_64-linux/7.5.0/../../../../x86_64-linux/lib -L/usr/local/lib/gcc/x86_64-linux/7.5.0/../../.. CMakeFiles/cmTC_d466c.dir/CMakeCCompilerABI.c.o -lgcc --as-needed -lgcc_s --no-as-needed -lc -lgcc --as-needed -lgcc_s --no-as-needed /usr/local/lib/gcc/x86_64-linux/7.5.0/crtend.o /usr/local/lib/gcc/x86_64-linux/7.5.0/../../../../x86_64-linux/lib/../lib64/crtn.o
+COLLECT_GCC_OPTIONS='-v' '-o' 'cmTC_d466c' '-mtune=sandybridge' '-march=westmere'
+gmake[1]: Leaving directory `/tmp/tmp.ljbuwFip2T/cmake-build-debug/CMakeFiles/CMakeTmp'
+
+
+
+Parsed C implicit include dir info from above output: rv=done
+  found start of include info
+  found start of implicit include info
+    add: [/usr/local/lib/gcc/x86_64-linux/7.5.0/include]
+    add: [/usr/local/include]
+    add: [/usr/local/lib/gcc/x86_64-linux/7.5.0/include-fixed]
+    add: [/usr/include]
+  end of search list found
+  collapse include dir [/usr/local/lib/gcc/x86_64-linux/7.5.0/include] ==> [/usr/local/lib/gcc/x86_64-linux/7.5.0/include]
+  collapse include dir [/usr/local/include] ==> [/usr/local/include]
+  collapse include dir [/usr/local/lib/gcc/x86_64-linux/7.5.0/include-fixed] ==> [/usr/local/lib/gcc/x86_64-linux/7.5.0/include-fixed]
+  collapse include dir [/usr/include] ==> [/usr/include]
+  implicit include dirs: [/usr/local/lib/gcc/x86_64-linux/7.5.0/include;/usr/local/include;/usr/local/lib/gcc/x86_64-linux/7.5.0/include-fixed;/usr/include]
+
+
+Parsed C implicit link information from above output:
+  link line regex: [^( *|.*[/\])(ld|CMAKE_LINK_STARTFILE-NOTFOUND|([^/\]+-)?ld|collect2)[^/\]*( |$)]
+  ignore line: [Change Dir: /tmp/tmp.ljbuwFip2T/cmake-build-debug/CMakeFiles/CMakeTmp]
+  ignore line: []
+  ignore line: [Run Build Command(s):/usr/bin/gmake cmTC_d466c/fast && /usr/bin/gmake  -f CMakeFiles/cmTC_d466c.dir/build.make CMakeFiles/cmTC_d466c.dir/build]
+  ignore line: [gmake[1]: Entering directory `/tmp/tmp.ljbuwFip2T/cmake-build-debug/CMakeFiles/CMakeTmp']
+  ignore line: [Building C object CMakeFiles/cmTC_d466c.dir/CMakeCCompilerABI.c.o]
+  ignore line: [/usr/local/bin/gcc   -v -o CMakeFiles/cmTC_d466c.dir/CMakeCCompilerABI.c.o   -c /usr/local/share/cmake-3.17/Modules/CMakeCCompilerABI.c]
+  ignore line: [Using built-in specs.]
+  ignore line: [COLLECT_GCC=/usr/local/bin/gcc]
+  ignore line: [Target: x86_64-linux]
+  ignore line: [Configured with: ../configure --build=x86_64-linux --with-arch=westmere --with-tune=sandybridge --with-thread=posix --with-as=/usr/local/bin/as --with-ld=/usr/local/bin/ld --with-system-zlib --program-suffix=-7.5]
+  ignore line: [Thread model: posix]
+  ignore line: [gcc version 7.5.0 (GCC) ]
+  ignore line: [COLLECT_GCC_OPTIONS='-v' '-o' 'CMakeFiles/cmTC_d466c.dir/CMakeCCompilerABI.c.o' '-c' '-mtune=sandybridge' '-march=westmere']
+  ignore line: [ /usr/local/libexec/gcc/x86_64-linux/7.5.0/cc1 -quiet -v /usr/local/share/cmake-3.17/Modules/CMakeCCompilerABI.c -quiet -dumpbase CMakeCCompilerABI.c -mtune=sandybridge -march=westmere -auxbase-strip CMakeFiles/cmTC_d466c.dir/CMakeCCompilerABI.c.o -version -o /tmp/ccUC67Pb.s]
+  ignore line: [GNU C11 (GCC) version 7.5.0 (x86_64-linux)]
+  ignore line: [	compiled by GNU C version 7.5.0  GMP version 6.0.0  MPFR version 3.1.1  MPC version 0.8.2  isl version none]
+  ignore line: [warning: MPC header version 0.8.2 differs from library version 1.0.1.]
+  ignore line: [GGC heuristics: --param ggc-min-expand=100 --param ggc-min-heapsize=131072]
+  ignore line: [ignoring duplicate directory "/usr/local/lib/gcc/x86_64-linux/7.5.0/../../../../x86_64-linux/include"]
+  ignore line: [#include "..." search starts here:]
+  ignore line: [#include <...> search starts here:]
+  ignore line: [ /usr/local/lib/gcc/x86_64-linux/7.5.0/include]
+  ignore line: [ /usr/local/include]
+  ignore line: [ /usr/local/lib/gcc/x86_64-linux/7.5.0/include-fixed]
+  ignore line: [ /usr/include]
+  ignore line: [End of search list.]
+  ignore line: [GNU C11 (GCC) version 7.5.0 (x86_64-linux)]
+  ignore line: [	compiled by GNU C version 7.5.0  GMP version 6.0.0  MPFR version 3.1.1  MPC version 0.8.2  isl version none]
+  ignore line: [warning: MPC header version 0.8.2 differs from library version 1.0.1.]
+  ignore line: [GGC heuristics: --param ggc-min-expand=100 --param ggc-min-heapsize=131072]
+  ignore line: [Compiler executable checksum: c462cb5fb7dacc60e72bc574f1918ba8]
+  ignore line: [COLLECT_GCC_OPTIONS='-v' '-o' 'CMakeFiles/cmTC_d466c.dir/CMakeCCompilerABI.c.o' '-c' '-mtune=sandybridge' '-march=westmere']
+  ignore line: [ /usr/local/bin/as -v --64 -o CMakeFiles/cmTC_d466c.dir/CMakeCCompilerABI.c.o /tmp/ccUC67Pb.s]
+  ignore line: [GNU assembler version 2.27 (x86_64-pc-linux-gnu) using BFD version (GNU Binutils) 2.27]
+  ignore line: [COMPILER_PATH=/usr/local/libexec/gcc/x86_64-linux/7.5.0/:/usr/local/libexec/gcc/x86_64-linux/7.5.0/:/usr/local/libexec/gcc/x86_64-linux/:/usr/local/lib/gcc/x86_64-linux/7.5.0/:/usr/local/lib/gcc/x86_64-linux/:/usr/local/lib/gcc/x86_64-linux/7.5.0/../../../../x86_64-linux/bin/]
+  ignore line: [LIBRARY_PATH=/usr/local/lib/gcc/x86_64-linux/7.5.0/:/usr/local/lib/gcc/x86_64-linux/7.5.0/../../../../x86_64-linux/lib/../lib64/:/usr/local/lib/gcc/x86_64-linux/7.5.0/../../../../lib64/:/lib/../lib64/:/usr/lib/../lib64/:/usr/local/lib/gcc/x86_64-linux/7.5.0/../../../../x86_64-linux/lib/:/usr/local/lib/gcc/x86_64-linux/7.5.0/../../../:/lib/:/usr/lib/]
+  ignore line: [COLLECT_GCC_OPTIONS='-v' '-o' 'CMakeFiles/cmTC_d466c.dir/CMakeCCompilerABI.c.o' '-c' '-mtune=sandybridge' '-march=westmere']
+  ignore line: [Linking C executable cmTC_d466c]
+  ignore line: [/usr/local/bin/cmake -E cmake_link_script CMakeFiles/cmTC_d466c.dir/link.txt --verbose=1]
+  ignore line: [/usr/local/bin/gcc     -v CMakeFiles/cmTC_d466c.dir/CMakeCCompilerABI.c.o  -o cmTC_d466c ]
+  ignore line: [Using built-in specs.]
+  ignore line: [COLLECT_GCC=/usr/local/bin/gcc]
+  ignore line: [COLLECT_LTO_WRAPPER=/usr/local/libexec/gcc/x86_64-linux/7.5.0/lto-wrapper]
+  ignore line: [Target: x86_64-linux]
+  ignore line: [Configured with: ../configure --build=x86_64-linux --with-arch=westmere --with-tune=sandybridge --with-thread=posix --with-as=/usr/local/bin/as --with-ld=/usr/local/bin/ld --with-system-zlib --program-suffix=-7.5]
+  ignore line: [Thread model: posix]
+  ignore line: [gcc version 7.5.0 (GCC) ]
+  ignore line: [COMPILER_PATH=/usr/local/libexec/gcc/x86_64-linux/7.5.0/:/usr/local/libexec/gcc/x86_64-linux/7.5.0/:/usr/local/libexec/gcc/x86_64-linux/:/usr/local/lib/gcc/x86_64-linux/7.5.0/:/usr/local/lib/gcc/x86_64-linux/:/usr/local/lib/gcc/x86_64-linux/7.5.0/../../../../x86_64-linux/bin/]
+  ignore line: [LIBRARY_PATH=/usr/local/lib/gcc/x86_64-linux/7.5.0/:/usr/local/lib/gcc/x86_64-linux/7.5.0/../../../../x86_64-linux/lib/../lib64/:/usr/local/lib/gcc/x86_64-linux/7.5.0/../../../../lib64/:/lib/../lib64/:/usr/lib/../lib64/:/usr/local/lib/gcc/x86_64-linux/7.5.0/../../../../x86_64-linux/lib/:/usr/local/lib/gcc/x86_64-linux/7.5.0/../../../:/lib/:/usr/lib/]
+  ignore line: [COLLECT_GCC_OPTIONS='-v' '-o' 'cmTC_d466c' '-mtune=sandybridge' '-march=westmere']
+  link line: [ /usr/local/libexec/gcc/x86_64-linux/7.5.0/collect2 -plugin /usr/local/libexec/gcc/x86_64-linux/7.5.0/liblto_plugin.so -plugin-opt=/usr/local/libexec/gcc/x86_64-linux/7.5.0/lto-wrapper -plugin-opt=-fresolution=/tmp/ccVtqB3h.res -plugin-opt=-pass-through=-lgcc -plugin-opt=-pass-through=-lgcc_s -plugin-opt=-pass-through=-lc -plugin-opt=-pass-through=-lgcc -plugin-opt=-pass-through=-lgcc_s --eh-frame-hdr -m elf_x86_64 -dynamic-linker /lib64/ld-linux-x86-64.so.2 -o cmTC_d466c /usr/local/lib/gcc/x86_64-linux/7.5.0/../../../../x86_64-linux/lib/../lib64/crt1.o /usr/local/lib/gcc/x86_64-linux/7.5.0/../../../../x86_64-linux/lib/../lib64/crti.o /usr/local/lib/gcc/x86_64-linux/7.5.0/crtbegin.o -L/usr/local/lib/gcc/x86_64-linux/7.5.0 -L/usr/local/lib/gcc/x86_64-linux/7.5.0/../../../../x86_64-linux/lib/../lib64 -L/usr/local/lib/gcc/x86_64-linux/7.5.0/../../../../lib64 -L/lib/../lib64 -L/usr/lib/../lib64 -L/usr/local/lib/gcc/x86_64-linux/7.5.0/../../../../x86_64-linux/lib -L/usr/local/lib/gcc/x86_64-linux/7.5.0/../../.. CMakeFiles/cmTC_d466c.dir/CMakeCCompilerABI.c.o -lgcc --as-needed -lgcc_s --no-as-needed -lc -lgcc --as-needed -lgcc_s --no-as-needed /usr/local/lib/gcc/x86_64-linux/7.5.0/crtend.o /usr/local/lib/gcc/x86_64-linux/7.5.0/../../../../x86_64-linux/lib/../lib64/crtn.o]
+    arg [/usr/local/libexec/gcc/x86_64-linux/7.5.0/collect2] ==> ignore
+    arg [-plugin] ==> ignore
+    arg [/usr/local/libexec/gcc/x86_64-linux/7.5.0/liblto_plugin.so] ==> ignore
+    arg [-plugin-opt=/usr/local/libexec/gcc/x86_64-linux/7.5.0/lto-wrapper] ==> ignore
+    arg [-plugin-opt=-fresolution=/tmp/ccVtqB3h.res] ==> ignore
+    arg [-plugin-opt=-pass-through=-lgcc] ==> ignore
+    arg [-plugin-opt=-pass-through=-lgcc_s] ==> ignore
+    arg [-plugin-opt=-pass-through=-lc] ==> ignore
+    arg [-plugin-opt=-pass-through=-lgcc] ==> ignore
+    arg [-plugin-opt=-pass-through=-lgcc_s] ==> ignore
+    arg [--eh-frame-hdr] ==> ignore
+    arg [-m] ==> ignore
+    arg [elf_x86_64] ==> ignore
+    arg [-dynamic-linker] ==> ignore
+    arg [/lib64/ld-linux-x86-64.so.2] ==> ignore
+    arg [-o] ==> ignore
+    arg [cmTC_d466c] ==> ignore
+    arg [/usr/local/lib/gcc/x86_64-linux/7.5.0/../../../../x86_64-linux/lib/../lib64/crt1.o] ==> ignore
+    arg [/usr/local/lib/gcc/x86_64-linux/7.5.0/../../../../x86_64-linux/lib/../lib64/crti.o] ==> ignore
+    arg [/usr/local/lib/gcc/x86_64-linux/7.5.0/crtbegin.o] ==> ignore
+    arg [-L/usr/local/lib/gcc/x86_64-linux/7.5.0] ==> dir [/usr/local/lib/gcc/x86_64-linux/7.5.0]
+    arg [-L/usr/local/lib/gcc/x86_64-linux/7.5.0/../../../../x86_64-linux/lib/../lib64] ==> dir [/usr/local/lib/gcc/x86_64-linux/7.5.0/../../../../x86_64-linux/lib/../lib64]
+    arg [-L/usr/local/lib/gcc/x86_64-linux/7.5.0/../../../../lib64] ==> dir [/usr/local/lib/gcc/x86_64-linux/7.5.0/../../../../lib64]
+    arg [-L/lib/../lib64] ==> dir [/lib/../lib64]
+    arg [-L/usr/lib/../lib64] ==> dir [/usr/lib/../lib64]
+    arg [-L/usr/local/lib/gcc/x86_64-linux/7.5.0/../../../../x86_64-linux/lib] ==> dir [/usr/local/lib/gcc/x86_64-linux/7.5.0/../../../../x86_64-linux/lib]
+    arg [-L/usr/local/lib/gcc/x86_64-linux/7.5.0/../../..] ==> dir [/usr/local/lib/gcc/x86_64-linux/7.5.0/../../..]
+    arg [CMakeFiles/cmTC_d466c.dir/CMakeCCompilerABI.c.o] ==> ignore
+    arg [-lgcc] ==> lib [gcc]
+    arg [--as-needed] ==> ignore
+    arg [-lgcc_s] ==> lib [gcc_s]
+    arg [--no-as-needed] ==> ignore
+    arg [-lc] ==> lib [c]
+    arg [-lgcc] ==> lib [gcc]
+    arg [--as-needed] ==> ignore
+    arg [-lgcc_s] ==> lib [gcc_s]
+    arg [--no-as-needed] ==> ignore
+    arg [/usr/local/lib/gcc/x86_64-linux/7.5.0/crtend.o] ==> ignore
+    arg [/usr/local/lib/gcc/x86_64-linux/7.5.0/../../../../x86_64-linux/lib/../lib64/crtn.o] ==> ignore
+  collapse library dir [/usr/local/lib/gcc/x86_64-linux/7.5.0] ==> [/usr/local/lib/gcc/x86_64-linux/7.5.0]
+  collapse library dir [/usr/local/lib/gcc/x86_64-linux/7.5.0/../../../../x86_64-linux/lib/../lib64] ==> [/usr/local/x86_64-linux/lib64]
+  collapse library dir [/usr/local/lib/gcc/x86_64-linux/7.5.0/../../../../lib64] ==> [/usr/local/lib64]
+  collapse library dir [/lib/../lib64] ==> [/lib64]
+  collapse library dir [/usr/lib/../lib64] ==> [/usr/lib64]
+  collapse library dir [/usr/local/lib/gcc/x86_64-linux/7.5.0/../../../../x86_64-linux/lib] ==> [/usr/local/x86_64-linux/lib]
+  collapse library dir [/usr/local/lib/gcc/x86_64-linux/7.5.0/../../..] ==> [/usr/local/lib]
+  implicit libs: [gcc;gcc_s;c;gcc;gcc_s]
+  implicit dirs: [/usr/local/lib/gcc/x86_64-linux/7.5.0;/usr/local/x86_64-linux/lib64;/usr/local/lib64;/lib64;/usr/lib64;/usr/local/x86_64-linux/lib;/usr/local/lib]
+  implicit fwks: []
+
+

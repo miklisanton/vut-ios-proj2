@@ -1,0 +1,1 @@
+/usr/local/bin/gcc  -pthread -Wall -Wextra -g   CMakeFiles/vut_ios_proj2.dir/main.c.o CMakeFiles/vut_ios_proj2.dir/processes.c.o CMakeFiles/vut_ios_proj2.dir/resources.c.o CMakeFiles/vut_ios_proj2.dir/help.c.o  -o vut_ios_proj2 

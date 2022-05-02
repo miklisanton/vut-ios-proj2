@@ -1,0 +1,23 @@
+/usr/local/bin/cmake -DCMAKE_BUILD_TYPE=Debug -DCMAKE_C_COMPILER=/usr/local/bin/gcc -std=gnu99 -Wall -Wextra -Werror -pedantic -G "CodeBlocks - Unix Makefiles" -S /tmp/tmp.ljbuwFip2T -B /tmp/tmp.ljbuwFip2T/cmake-build-debug
+-- The C compiler identification is GNU 7.5.0
+-- Check for working C compiler: /usr/local/bin/gcc
+-- Check for working C compiler: /usr/local/bin/gcc - works
+-- Detecting C compiler ABI info
+-- Detecting C compiler ABI info - done
+-- Detecting C compile features
+-- Detecting C compile features - done
+-- Configuring done
+CMake Error at CMakeLists.txt:7 (add_executable):
+  Cannot find source file:
+
+    processes.h
+
+  Tried extensions .c .C .c++ .cc .cpp .cxx .cu .m .M .mm .h .hh .h++ .hm
+  .hpp .hxx .in .txx
+
+
+CMake Error at CMakeLists.txt:7 (add_executable):
+  No SOURCES given to target: proj2
+
+
+CMake Generate step failed.  Build files cannot be regenerated correctly.

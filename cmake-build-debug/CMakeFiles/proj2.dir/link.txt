@@ -1,0 +1,1 @@
+/usr/local/bin/gcc  -pthread -std=gnu99 -Wall -Wextra -Werror -pedantic  -g   CMakeFiles/proj2.dir/main.c.o CMakeFiles/proj2.dir/processes.c.o CMakeFiles/proj2.dir/resources.c.o CMakeFiles/proj2.dir/help.c.o  -o proj2 
