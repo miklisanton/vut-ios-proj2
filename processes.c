@@ -1,10 +1,10 @@
 //
 // Created by Антон Миклис on 22.04.22.
 //
-//todo oxygen/hydrogen not enough case
 
 #include "processes.h"
 int oxygenProcess(Arguments args, FILE *fPtr){
+    int moleculesMax = moleculesToCreate(args.oxygenNumber, args.hydrogenNumber);
     pid_t oxygenPid;
     for (int i = 0; i < args.oxygenNumber; ++i) {
         if((oxygenPid = fork()) == 0){
@@ -12,8 +12,13 @@ int oxygenProcess(Arguments args, FILE *fPtr){
             sem_wait(semaphores.mutexPrint);
             fprintf(fPtr, "%d: O %d: started\n", sharedData->lineCount++, i + 1);
             fflush(fPtr);
+            if(i >= moleculesMax){
+                fprintf(fPtr, "%d: O %d: not enough H\n", sharedData->lineCount++, i + 1);
+                fflush(fPtr);
+                sem_post(semaphores.mutexPrint);
+                exit(0);
+            }
             sem_post(semaphores.mutexPrint);
-
             sleep_random(args.waitTime);
 
             sem_wait(semaphores.mutexPrint);
@@ -88,6 +93,7 @@ int oxygenProcess(Arguments args, FILE *fPtr){
 }
 
 int hydrogenProcess(Arguments args, FILE *fPtr){
+    int moleculesMax = moleculesToCreate(args.oxygenNumber, args.hydrogenNumber);
     pid_t hydrogenPid;
     for (int i = 0; i < args.hydrogenNumber; ++i) {
         if((hydrogenPid = fork()) == 0){
@@ -95,6 +101,12 @@ int hydrogenProcess(Arguments args, FILE *fPtr){
             sem_wait(semaphores.mutexPrint);
             fprintf(fPtr, "%d: H %d: started\n", sharedData->lineCount++, i + 1);
             fflush(fPtr);
+            if(i + 1 > moleculesMax * 2){
+                fprintf(fPtr, "%d: H %d: not enough O or H\n", sharedData->lineCount++, i + 1);
+                fflush(fPtr);
+                sem_post(semaphores.mutexPrint);
+                exit(0);
+            }
             sem_post(semaphores.mutexPrint);
             sleep_random(args.waitTime);
 

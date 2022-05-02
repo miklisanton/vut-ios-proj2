@@ -20,5 +20,6 @@ typedef struct{
 void sleep_random(int max);
 FILE* create_file();
 Arguments* readArguments(int argc, char **argv);
+int moleculesToCreate(int oxygen, int hydrogen);
 
 #endif //VUT_IOS_PROJ2_HELP_H

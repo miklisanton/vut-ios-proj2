@@ -61,3 +61,13 @@ Arguments* readArguments(int argc, char **argv){
     }
     return args;
 }
+
+int moleculesToCreate(int oxygen, int hydrogen){
+    int moleculeCount = 0;
+    while (hydrogen >= 2 && oxygen >= 1){
+        moleculeCount++;
+        hydrogen -= 2;
+        oxygen -= 1;
+    }
+    return moleculeCount;
+}
